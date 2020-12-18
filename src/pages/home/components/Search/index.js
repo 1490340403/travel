@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 14:34:02
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-17 15:57:50
+ * @LastTime: 2020-12-18 09:47:49
  * @message: 
  */
 import React, { useState, useEffect, memo } from 'react';
@@ -80,4 +80,4 @@ const [selectedCity,setSelectedCity]=useState('')
 function areEqual(prevProps, nextProps){
    return prevProps.citysLoading===nextProps.citysLoading&&prevProps.citys===nextProps.citys?true:false
 }
-export default memo(Search);
+export default memo(Search,areEqual);
