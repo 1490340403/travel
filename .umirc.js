@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-16 15:08:14
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-18 10:45:32
+ * @LastTime: 2020-12-21 17:06:46
  * @message: 
  */
 
@@ -33,6 +33,10 @@ export default {
         {
           path:'/house',
           component: '../pages/house'
+        },
+        {
+          path:'/order',
+          component: '../pages/order'
         },
         {
           path:'/observer',
