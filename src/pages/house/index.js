@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 09:21:15
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-21 15:32:03
+ * @LastTime: 2020-12-22 16:47:30
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
@@ -12,11 +12,13 @@ import Info from './components/Info'
 import List from './components/List'
 import Footer from './components/Footer'
 import { useHttpHook ,useObserverHook} from '@/hooks';
+
 import style from './index.less'
 
 export default function (props){
   const [commentList,setCommentList]=useState([])
   const [isMoreData,setIsMoreData]=useState(true)
+
   const [page,setPage]=useState({
     pageSize:8,
     pageNum:1
@@ -49,12 +51,19 @@ useObserverHook('#mkLoading',(entries)=>{
     })
   }
 },null)
+const resetPage=()=>{
+  setPage({
+    pageSize:8,
+    pageNum:1
+  })
+  console.log('进来了')
+}
   return(
     <div className={style.housePage}>
       <Banner data={detail?.banner}/>
       <Info detail={detail?.info} />
       <List lists={commentList} isMoreData={isMoreData}/>
-      <Footer/>
+      <Footer resetData={resetPage}/>
     </div>
   )
 }

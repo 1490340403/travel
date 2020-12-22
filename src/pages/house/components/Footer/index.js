@@ -3,17 +3,19 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-21 15:29:48
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-21 16:26:49
+ * @LastTime: 2020-12-22 16:58:11
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
-import { TextareaItem, Button, Toast ,Modal} from 'antd-mobile';
+import { TextareaItem, Button, Toast } from 'antd-mobile';
+import { Modal } from '@/components';
 import style from '../../index.less'
 import {useHttpHook} from '@/hooks'
+import { StoreContext, useStoreHook } from 'think-react-store';
  function Footer (props) {
   const [show, setShow] = useState(false);
   const [commentsValue, setCommentsValue] = useState();
-
+  const {house:{addMessage}} = useStoreHook()
   const handleClick = () => {
     setShow(true)
   };
@@ -27,7 +29,7 @@ import {useHttpHook} from '@/hooks'
     setShow(false)
   };
 
-  const handleSubmit = () => {
+  const handleSubmit =() => {
     if(!commentsValue){
       Toast.fail('请填写内容.')
     }else{
@@ -40,7 +42,9 @@ import {useHttpHook} from '@/hooks'
       // if(data){
       //   Toast.success('添加成功。')
       // }
+      addMessage(commentsValue)
       setShow(false)
+      props.resetData()
     }
   };
 
@@ -54,7 +58,12 @@ import {useHttpHook} from '@/hooks'
         评论~
       </div>
       <Modal
-        visible={show}
+        show={show}
+        styleBody={{
+          height: '220px',
+          bottom: '0px',
+          top: 'unset'
+        }}
         onClose={handleClose}
       >
         <div className={style.modalComment}>
@@ -63,7 +72,6 @@ import {useHttpHook} from '@/hooks'
             count={200}
             onChange={handleChange}
           />
-          <div style={{marginTop:20}}></div>
           <Button className={style.commentBtn} type='warning' onClick={handleSubmit}>评论</Button>
         </div>
       </Modal>

@@ -3,26 +3,28 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 09:21:15
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 14:09:28
+ * @LastTime: 2020-12-22 16:04:17
  * @message: 
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
+import { StoreContext, useStoreHook } from 'think-react-store';
 import { List } from 'antd-mobile';
 import style from './index.less'
 import router from 'umi/router';
 import { useHttpHook} from '@/hooks'
 export default function (props){
+  const {user:{id}} = useStoreHook()
   const [data]=useHttpHook({
     url:'/user/detail',
     body:{
-      id:10
+      id
     }
   })
   const handleClick=()=>{
     router.push({
       pathname: '/user/edit',
       query: {
-        id:10
+        id
       }
     })
   }

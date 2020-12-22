@@ -3,44 +3,52 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 09:21:15
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-17 16:26:19
+ * @LastTime: 2020-12-22 15:26:58
  * @message: 
  */
-import React, { useState, useEffect } from 'react';
-import { List, InputItem, WhiteSpace,Button,Toast } from 'antd-mobile';
+import React, { useState } from 'react';
+import { List, InputItem,Button,Toast } from 'antd-mobile';
+import { StoreContext, useStoreHook } from 'think-react-store';
 import { createForm } from 'rc-form';
 import style from './index.less';
  function Register(props){
-  const { getFieldProps } =props.form;
-  const [password,setPassword]=useState('')
-  const [username,setUsername]=useState('')
-  const changeVal=(value,type)=>{ 
-    if(type==='password'){
-      setPassword(value)
-    }else{
-      setUsername(value)
-    }
-  }
+  const { getFieldProps , validateFields} =props.form;
+  const {user:{RegisterFn}} = useStoreHook()
+  // const [password,setPassword]=useState('')
+  // const [username,setUsername]=useState('')
+  // const changeVal=(value,type)=>{ 
+  //   if(type==='password'){
+  //     setPassword(value)
+  //   }else{
+  //     setUsername(value)
+  //   }
+  // }
   const registerFn=()=>{
-    if(!password||!username){
-      return Toast.fail('请填写完整信息')
-    }
+    console.log('点击了')
+    validateFields((err,value)=>{
+      if(err){
+        Toast.error(err)
+        return
+      }
+      RegisterFn(value)
+    })
   }
   return(
     <div className={style.registerPage}>
       <List renderHeader={() =>'注册'}>
          <InputItem
-          {...getFieldProps('username')}
-          value={username}
-          onChange={(e)=>changeVal(e,'username')}
+          {...getFieldProps('username',{ rules: [{ required: true }]})}
+         // value={username}
+          //onChange={(e)=>changeVal(e,'username')}
           >用户名</InputItem>
           <InputItem
-          {...getFieldProps('password')}
-          value={password}
-          onChange={(e)=>changeVal(e,'password')}
+          {...getFieldProps('password',{ rules: [{ required: true }]})}
+          //value={password}
+          
+         // onChange={(e)=>changeVal(e,'password')}
           >密码</InputItem>
-          <Button type='primary' onclick={registerFn}> 注册</Button>
       </List>
+      <Button type='primary' onClick={registerFn}> 注册</Button>
     </div>
   )
 }

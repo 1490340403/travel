@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-22 13:48:46
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 14:34:42
+ * @LastTime: 2020-12-22 16:11:09
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
@@ -11,11 +11,12 @@ import {
   List, ImagePicker, Toast, InputItem, Button
 } from 'antd-mobile';
 import { createForm } from 'rc-form';
+import { StoreContext, useStoreHook } from 'think-react-store';
 import {useHttpHook} from '@/hooks'
 function Edit(props) {
   const [files, setFiles] = useState([]);
   const { getFieldProps, validateFields } = props.form;
-
+  const {user:{EditPerFn}} = useStoreHook()
   const handleChange = (files) => {
     // console.log(files)
     if (files[0]?.file?.size / 1024 / 1024 > 0.5) {
@@ -46,6 +47,11 @@ function Edit(props) {
       //   })
       //   console.log(data,'data')
       // }
+      EditPerFn({
+        img: files[0].url,
+        tel: value.tel,
+        sign: value.sign
+      })
       }
     });
    
