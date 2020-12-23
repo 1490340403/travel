@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 09:21:15
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 16:47:30
+ * @LastTime: 2020-12-22 17:41:31
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
@@ -11,6 +11,7 @@ import Banner from './components/Banner'
 import Info from './components/Info'
 import List from './components/List'
 import Footer from './components/Footer'
+import { StoreContext, useStoreHook } from 'think-react-store';
 import { useHttpHook ,useObserverHook} from '@/hooks';
 
 import style from './index.less'
@@ -18,7 +19,7 @@ import style from './index.less'
 export default function (props){
   const [commentList,setCommentList]=useState([])
   const [isMoreData,setIsMoreData]=useState(true)
-
+  const {house:{isPostMsg}} = useStoreHook()
   const [page,setPage]=useState({
     pageSize:8,
     pageNum:1
@@ -56,7 +57,6 @@ const resetPage=()=>{
     pageSize:8,
     pageNum:1
   })
-  console.log('进来了')
 }
   return(
     <div className={style.housePage}>

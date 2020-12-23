@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-22 14:54:29
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 16:09:49
+ * @LastTime: 2020-12-23 13:22:05
  * @message: 
  */
 import {Http} from '@/utils'
@@ -64,7 +64,12 @@ export default{
        })
        if(res){
          cookie.set('user',res)
-         router.push('/')
+         const path=urlGet('from')
+         if(path){
+           router.push(path)
+         }else{
+          router.push('/')
+         }
        }
      },
   },

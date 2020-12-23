@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-16 15:08:14
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 13:50:26
+ * @LastTime: 2020-12-23 09:52:04
  * @message: 
  */
 
@@ -16,8 +16,8 @@ export default {
       component: '../layouts/index',
       routes: [
         { path: '/', component: '../pages/home' },
-        { path: '/order', component: '../pages/order' },
-        { path: '/my', component: '../pages/my' },
+        { path: '/order', component: '../pages/order' ,auth: true},
+        { path: '/my', component: '../pages/my',auth: true },
         {
           path:'/login',
           component: '../pages/login'
