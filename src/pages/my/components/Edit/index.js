@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-22 13:48:46
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 16:11:09
+ * @LastTime: 2020-12-24 16:16:08
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
@@ -32,7 +32,6 @@ function Edit(props) {
       return;
     }
     validateFields((error, value)=>{
-      console.log(value,'value')
       if(error){
         Toast.fail('请将信息补充完整');
         return;
@@ -44,7 +43,6 @@ function Edit(props) {
       //       tel: value.tel,
       //       sign: value.sign
       //     }
-      //   })
       //   console.log(data,'data')
       // }
       EditPerFn({
@@ -58,7 +56,6 @@ function Edit(props) {
   };
 
   useEffect(() => {
-    console.log(props)
   }, [])
 
   return (

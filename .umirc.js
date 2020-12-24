@@ -3,13 +3,20 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-16 15:08:14
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-23 09:52:04
+ * @LastTime: 2020-12-24 16:49:03
  * @message: 
  */
 
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
+  mock:false,
+  proxy:{
+    '/api':{
+      'target':'http://127.0.0.1:7001/',
+      'changeOrigin':true
+    }
+  },
   routes: [
     {
       path: '/',

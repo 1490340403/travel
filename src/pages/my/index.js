@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 09:21:15
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 16:04:17
+ * @LastTime: 2020-12-24 18:09:17
  * @message: 
  */
 import React, { useState, useEffect,useContext } from 'react';
@@ -17,7 +17,7 @@ export default function (props){
   const [data]=useHttpHook({
     url:'/user/detail',
     body:{
-      id
+      username:localStorage.getItem('username')
     }
   })
   const handleClick=()=>{

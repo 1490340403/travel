@@ -1,3 +1,11 @@
+/*
+ * @Author: 陈刚强
+ * @Email: 1490340403@qq.com
+ * @Date: 2020-12-17 13:57:47
+ * @LastAuthor: 陈刚强
+ * @LastTime: 2020-12-24 17:56:32
+ * @message: 
+ */
 import { Toast } from 'antd-mobile';
 
 export default function Http({
@@ -9,9 +17,10 @@ export default function Http({
   setResult,
 }){
   setLoading && setLoading(true);
-
-  const defaultHeader = {
-    'Content-type': 'application/json'
+  const token=localStorage.getItem('token')?{'token':localStorage.getItem('token')}:{}
+   let defaultHeader= {
+    'Content-type': 'application/json',
+     ...token
   };
 
   let params;
@@ -33,6 +42,7 @@ export default function Http({
       .then(res => res.json())
       .then(res => {
         if(res.status === 200){
+          console.log('status',res.data)
           resolve(res.data);
           setResult && setResult(res.data);
         }else {

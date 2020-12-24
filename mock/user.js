@@ -3,11 +3,11 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-22 13:34:20
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 13:34:21
+ * @LastTime: 2020-12-24 17:53:16
  * @message: 
  */
 export default {
-  'post /api/user/detail': (req, res) => {
+  'post /api/user/detail1': (req, res) => {
     res.json({
       status: 200,
       data: {
@@ -25,7 +25,7 @@ export default {
       data: 'ok'
     });
   },
-  'post /api/user/login': (req, res) => {
+  'post /api/user/login1': (req, res) => {
     res.json({
       status: 200,
       data: {
@@ -34,7 +34,7 @@ export default {
       }
     });
   },
-  'post /api/user/register': (req, res) => {
+  'post /api/user/register1': (req, res) => {
     res.json({
       status: 200,
       data: {

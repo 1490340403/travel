@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 09:21:15
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 15:26:58
+ * @LastTime: 2020-12-24 16:16:21
  * @message: 
  */
 import React, { useState } from 'react';
@@ -24,7 +24,6 @@ import style from './index.less';
   //   }
   // }
   const registerFn=()=>{
-    console.log('点击了')
     validateFields((err,value)=>{
       if(err){
         Toast.error(err)

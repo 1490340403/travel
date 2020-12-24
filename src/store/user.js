@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-22 14:54:29
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-23 13:22:05
+ * @LastTime: 2020-12-24 18:01:08
  * @message: 
  */
 import {Http} from '@/utils'
@@ -46,9 +46,10 @@ export default{
          }
       })
       if(res){
-        cookie.set('user',res)
+        localStorage.setItem('token',res.token)
+        localStorage.setItem('username',res.username)
         Toast.success('注册成功')
-        router.push('/')
+        // router.push('/')
       }
     },
     async LoginFn(dispatch,state,payload){
@@ -63,13 +64,16 @@ export default{
          }
        })
        if(res){
-         cookie.set('user',res)
-         const path=urlGet('from')
-         if(path){
-           router.push(path)
-         }else{
-          router.push('/')
-         }
+        localStorage.setItem('token',res.token)
+        localStorage.setItem('username',res.username)
+        Toast.success('登陆成功')
+         //cookie.set('user',res)
+        //  const path=urlGet('from')
+        //  if(path){
+        //    router.push(path)
+        //  }else{
+        //   router.push('/')
+        //  }
        }
      },
   },
