@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-22 13:34:20
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-24 17:53:16
+ * @LastTime: 2020-12-25 09:29:28
  * @message: 
  */
 export default {
@@ -19,7 +19,7 @@ export default {
       }
     });
   },
-  'post /api/user/edit': (req, res) => {
+  'post /api/user/edit1': (req, res) => {
     res.json({
       status: 200,
       data: 'ok'

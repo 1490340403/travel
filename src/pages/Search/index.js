@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 15:26:34
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-18 16:55:40
+ * @LastTime: 2020-12-25 16:31:45
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
@@ -23,11 +23,11 @@ export default function (props) {
    pageNum:1
  })
  const [data,loading]=useHttpHook({
-  url:'/getList',
+  url:'/house/search',
   body:{
     ...page,
     houseName,
-    code:city,
+    cityCode:city,
     startTime,
     endTime
   },
@@ -92,9 +92,9 @@ useObserverHook('#mkLoading',(entries)=>{
           {
         houseLists.map(item => (
           <div className={style.item} key={item.id}>
-            <img alt='img' className='itemImg' src={require('../../assets/blank.png')} data-src={item.img} />
+            <img alt='img' className='itemImg' src={require('../../assets/blank.png')} data-src={item?.imgs[0]?.url} />
             <div className={style.itemRight}>
-              <div className={style.title}>{item.title}</div>
+              <div className={style.title}>{item.name}</div>
               <div className={style.price}>{item.price}</div>
             </div>
             </div> 

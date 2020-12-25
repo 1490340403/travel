@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 13:53:19
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-17 15:40:16
+ * @LastTime: 2020-12-25 15:30:45
  * @message: 
  */
 import React, { useState, useEffect, memo } from 'react';
@@ -25,7 +25,7 @@ function Hot(props) {
       <div className={style.hotLists}>
         {props?.houses?.map(item => (
           <div className={style.hotListsItem} key={item.id} onClick={() => handleClick(item.id)}>
-            <img className={style.img} alt='img' src={item.img} />
+            <img className={style.img} alt='img' src={item?.imgs[0]?.url} />
             <div className={style.title}>{item.title}</div>
             <div className={style.info}>{item.info}</div>
             <div className={style.price}>￥{item.price}</div>

@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-22 14:54:29
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-24 18:01:08
+ * @LastTime: 2020-12-25 10:27:20
  * @message: 
  */
 import {Http} from '@/utils'
@@ -76,5 +76,15 @@ export default{
         //  }
        }
      },
+     async layoutFn(dispatch,state,payload){
+       const res=await Http({
+         url:'/user/layout'
+       })
+       if(res){
+         Toast.success('退出成功')
+         localStorage.clear()
+         router.push('/login')
+       }
+     }
   },
 }

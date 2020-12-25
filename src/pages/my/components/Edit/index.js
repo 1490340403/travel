@@ -3,13 +3,14 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-22 13:48:46
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-24 16:16:08
+ * @LastTime: 2020-12-25 10:20:25
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
 import {
   List, ImagePicker, Toast, InputItem, Button
 } from 'antd-mobile';
+import dayjs from 'dayjs';
 import { createForm } from 'rc-form';
 import { StoreContext, useStoreHook } from 'think-react-store';
 import {useHttpHook} from '@/hooks'
@@ -36,25 +37,15 @@ function Edit(props) {
         Toast.fail('请将信息补充完整');
         return;
       }else {
-      //   const [data]=useHttpHook({
-      //     url:'/user/edit',
-      //     body:{
-      //       img: files[0].url,
-      //       tel: value.tel,
-      //       sign: value.sign
-      //     }
-      //   console.log(data,'data')
-      // }
       EditPerFn({
-        img: files[0].url,
-        tel: value.tel,
-        sign: value.sign
+        avatar: files[0].url,
+        phone: value.tel,
+        sign: value.sign,
+        username:localStorage.getItem('username')
       })
       }
     });
-   
   };
-
   useEffect(() => {
   }, [])
 

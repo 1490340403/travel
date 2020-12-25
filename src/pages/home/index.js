@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 09:21:15
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-17 14:41:21
+ * @LastTime: 2020-12-25 14:43:36
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
@@ -23,8 +23,9 @@ export default function (props){
   return(
     <div className={style.home}>
       <Header/>
-      <Search citys={citys} citysLoading={citysLoading}/>
-      <Hot houses={hot}/>
+      {citys&&<Search citys={citys} citysLoading={citysLoading}/>}
+      
+       {hot&& <Hot houses={hot}/>}
     </div>
   )
 }
