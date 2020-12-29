@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 09:21:15
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 17:41:31
+ * @LastTime: 2020-12-29 16:28:55
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
@@ -29,12 +29,20 @@ export default function (props){
     url:'/bannerInfo',
   })
   const [data,loading]=useHttpHook({
-    url:'/comments/lists',
+    url:'/comments/list',
     body:{
       ...page,
-      id
+      userId:localStorage.getItem('id'),
+      houseId:id
     },
     watch:[page.pageNum,id]
+  })
+  const [isOrder]=useHttpHook({
+    url:'/order/isOrder',
+    body:{
+      userId:localStorage.getItem('id'),
+      houseId:id
+    }
   })
 useEffect(()=>{
   if(!loading&&data){
@@ -52,18 +60,15 @@ useObserverHook('#mkLoading',(entries)=>{
     })
   }
 },null)
-const resetPage=()=>{
-  setPage({
-    pageSize:8,
-    pageNum:1
-  })
+const usePage=()=>{
+
 }
   return(
     <div className={style.housePage}>
       <Banner data={detail?.banner}/>
-      <Info detail={detail?.info} />
+      <Info isOrder={isOrder} detail={detail?.info} isPayed={isOrder?.isPayed} id={id}/>
       <List lists={commentList} isMoreData={isMoreData}/>
-      <Footer resetData={resetPage}/>
+      <Footer resetData={usePage} id={id}/>
     </div>
   )
 }

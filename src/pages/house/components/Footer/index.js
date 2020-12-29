@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-21 15:29:48
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-22 17:38:51
+ * @LastTime: 2020-12-29 13:20:00
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
@@ -11,6 +11,7 @@ import { TextareaItem, Button, Toast } from 'antd-mobile';
 import { Modal } from '@/components';
 import style from '../../index.less'
 import {useHttpHook} from '@/hooks'
+import {timer} from '@/utils'
 import { StoreContext, useStoreHook } from 'think-react-store';
  function Footer (props) {
   const [show, setShow] = useState(false);
@@ -42,7 +43,12 @@ import { StoreContext, useStoreHook } from 'think-react-store';
       // if(data){
       //   Toast.success('添加成功。')
       // }
-      addMessage(commentsValue)
+     addMessage({
+       userId:localStorage.getItem('id'),
+       houseId:props.id,
+       msg:commentsValue,
+       createTime:timer(new Date())
+     })
       setShow(false)
       props.resetData()
     }

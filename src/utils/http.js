@@ -3,10 +3,11 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-17 13:57:47
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-24 17:56:32
+ * @LastTime: 2020-12-28 10:39:43
  * @message: 
  */
 import { Toast } from 'antd-mobile';
+import { router } from 'umi';
 
 export default function Http({
   url,
@@ -43,6 +44,10 @@ export default function Http({
       .then(res => {
         if(res.status === 200){
           console.log('status',res.data)
+          if(res.url){
+            Toast.fail('请登录')
+            router.push('/login')
+          }
           resolve(res.data);
           setResult && setResult(res.data);
         }else {

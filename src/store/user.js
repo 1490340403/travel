@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-22 14:54:29
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-25 10:27:20
+ * @LastTime: 2020-12-29 09:36:01
  * @message: 
  */
 import {Http} from '@/utils'
@@ -48,6 +48,7 @@ export default{
       if(res){
         localStorage.setItem('token',res.token)
         localStorage.setItem('username',res.username)
+        localStorage.setItem('id',res.id)
         Toast.success('注册成功')
         // router.push('/')
       }
@@ -66,6 +67,7 @@ export default{
        if(res){
         localStorage.setItem('token',res.token)
         localStorage.setItem('username',res.username)
+        localStorage.setItem('id',res.id)
         Toast.success('登陆成功')
          //cookie.set('user',res)
         //  const path=urlGet('from')

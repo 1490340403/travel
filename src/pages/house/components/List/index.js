@@ -3,7 +3,7 @@
  * @Email: 1490340403@qq.com
  * @Date: 2020-12-21 14:10:46
  * @LastAuthor: 陈刚强
- * @LastTime: 2020-12-21 15:07:47
+ * @LastTime: 2020-12-29 14:15:57
  * @message: 
  */
 import React, { useState, useEffect } from 'react';
@@ -20,14 +20,14 @@ export default function (props) {
       <div className={style.commentLists}>
         {props?.lists?.map(item => (
           <div className={style.commentListsItem} key={item?.id}>
-            <img alt='user' className={style.avatar} src={item?.avatar} />
+            <img alt='user' className={style.avatar} src={item?.user?.avatar} />
             <div className={style.right}>
               <div className={style.rightTop}>
                 <p>{item?.username}</p>
                 <p>{timer(item?.createTime)}</p>
               </div>
               <div className={style.rightBottom}>
-                {item?.info}
+                {item?.msg}
               </div>
             </div>
           </div>
